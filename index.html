@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>¿Cómo funciona el ADN?</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #333333;
+    }
+
+    .encabezado {
+      width: 100%;
+      position: relative;
+      background-image: url(adn2.jpg);
+      
+      background-size: contain;
+      background-position: center;
+      
+      color: rgb(71, 71, 71);
+      padding: 20px;
+      text-align: center;
+      height: 90px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+    }
+
+    .main {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 20px;
+      background: rgb(201, 201, 201);
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .content {
+      flex: 1 1 60%;
+      padding: 20px;
+    }
+
+    .visual {
+      flex: 1 1 40%;
+      height: 500px;
+    }
+
+    h1 {
+      color: #000000;
+      background-color: #ffffff;
+      padding: 10px;
+      border-radius: 5px;
+      border: 2px solid black;
+    }
+
+    h2 {
+      color: #578553;
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      background: #ddd;
+    }
+
+    
+  </style>
+</head>
+
+<body>
+  <header class="encabezado">
+    <div class="fondotexto">
+      <h1>¿Cómo funciona el ADN?</h1>
+    </div>
+
+  </header>
+
+  <div class="main">
+    <div class="content">
+      <h2>¿Qué es el ADN?</h2>
+      <p>El ADN (ácido desoxirribonucleico) es una molécula que contiene toda la información genética que necesita un
+        ser vivo para desarrollarse, funcionar, crecer y reproducirse. Es como un manual de instrucciones biológico que
+        está presente en casi todas las células de los organismos vivos.</p>
+
+      <h2>¿Cómo está estructurado?</h2>
+      <p>El ADN tiene forma de doble hélice. Cada "peldaño" está formado por pares de bases: adenina (A) con timina (T),
+        y citosina (C) con guanina (G).</p>
+      <p>Existe algo como un esqueleto hecho de azucares. Cuando hablamos del esqueleto hecho de azúcares, nos referimos
+        al esqueleto de azúcar-fosfato del ADN. Es la estructura principal que sostiene todo el ADN, como si fuera la
+        barandilla de una escalera.</p>
+
+      <h2>¿Qué función tiene?</h2>
+      <p>El ADN contiene instrucciones para fabricar proteínas. Estas instrucciones están en segmentos llamados genes.
+      </p>
+      <p>1.- Almacena información genética
+
+        Guarda las instrucciones para crear y mantener un ser vivo.
+
+      <p>2.- Transmite esa información
+
+        Se hereda de padres a hijos. </p>
+
+      <p>3.- Dirige la fabricación de proteínas
+
+        Da las órdenes para producir las proteínas que necesita la célula.
+      </p>
+      <p> 4.- Controla el funcionamiento celular
+
+        Activa o desactiva genes según lo que necesite la célula.</p>
+      </p>
+
+      <h2>¿Cómo se copia?</h2>
+      <p>1. Desenrollado (como abrir un cierre)
+        Una enzima llamada helicasa separa las dos cadenas del ADN rompiendo los puentes de hidrógeno entre las bases.
+
+        Se forma una “burbuja de replicación”.
+        Resultado: dos cadenas separadas listas para ser copiadas.</p>
+
+      <p>2. Formación de cadenas nuevas
+        Otra enzima llamada ADN polimerasa añade nuevos nucleótidos (A, T, C, G) a cada cadena original.
+
+        Sigue la regla de apareamiento:
+
+        A con T
+
+        C con G
+
+        Así, cada cadena vieja sirve como molde para crear una nueva.
+      </p>
+
+      <p>
+        3. Corrección y unión
+        La ADN polimerasa también corrige errores mientras copia.
+
+        Otra enzima, ligasa, “pega” los fragmentos en la cadena nueva para que quede continua.
+      </p>
+
+      <p>
+        Resultado final:
+        Dos moléculas de ADN idénticas, cada una con:
+
+        1 cadena antigua (original)
+
+        1 cadena nueva.
+
+        A esto se le llama replicación semiconservativa
+      </p>
+      <h2>Curiosidades</h2>
+      <ul>
+        <li>El ADN de una célula mide más de 2 metros si se desenrolla.</li>
+        <li>Compartimos 60% del ADN con una mosca de la fruta.</li>
+        <li>El genoma humano tiene unos 3 mil millones de pares de bases.</li>
+      </ul>
+    </div>
+
+    <div class="visual" id="dna-3d"></div>
+  </div>
+
+  <footer>
+    <p>Creado por Equipo X</p>
+  </footer>
+
+  <!-- Cargar Three.js desde CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.155.0/build/three.min.js"></script>
+
+  <!-- Código para la hélice de ADN -->
+  <script>
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(500, 500);
+    document.getElementById("dna-3d").appendChild(renderer.domElement);
+
+    camera.position.z = 20;
+
+    // Crear la doble hélice
+    const materialA = new THREE.MeshBasicMaterial({ color: 0xff4c4c });
+    const materialT = new THREE.MeshBasicMaterial({ color: 0x4c4cff });
+    const geometry = new THREE.SphereGeometry(0.3, 12, 12);
+
+    const helixGroup = new THREE.Group();
+
+    for (let i = 0; i < 30; i++) {
+      const angle = i * 0.4;
+      const y = i * 0.5;
+
+      const sphere1 = new THREE.Mesh(geometry, materialA);
+      sphere1.position.set(Math.cos(angle) * 2, y, Math.sin(angle) * 2);
+
+      const sphere2 = new THREE.Mesh(geometry, materialT);
+      sphere2.position.set(-Math.cos(angle) * 2, y, -Math.sin(angle) * 2);
+
+      const connectorGeometry = new THREE.CylinderGeometry(0.05, 0.05, 4, 8);
+      const connectorMaterial = new THREE.MeshBasicMaterial({ color: 0xaaaaaa });
+      const connector = new THREE.Mesh(connectorGeometry, connectorMaterial);
+
+      // Posicionar el cilindro entre las dos esferas
+      connector.position.copy(sphere1.position).lerp(sphere2.position, 0.5);
+      connector.lookAt(sphere2.position);
+      connector.rotateX(Math.PI / 2);
+      connector.scale.set(1, 0.5, 1);
+
+      helixGroup.add(sphere1);
+      helixGroup.add(sphere2);
+      helixGroup.add(connector);
+    }
+
+    helixGroup.position.y = -7.25; // Baja el modelo
+    scene.add(helixGroup);
+
+    // Animación
+    function animate() {
+      requestAnimationFrame(animate);
+      helixGroup.rotation.y += 0.01;
+      renderer.render(scene, camera);
+    }
+
+    animate();
+  </script>
+</body>
+
+</html>
